@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+    <h1>Accueil</h1>
+    <section>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input id="query" type="text" name="user_query"/>
+            <button type="submit">search</button>
+        </form>
+    </section>
+    <section id="gif-gallery">
+        {% if gifs is not None %}
+        {% for gif in gifs %}
+        <iframe id="{{ gif.id }}" title="{{ gif.title }}"
+                width="{{ gif.size.width }}" height="{{ gif.size.height }}"
+                src="{{ gif.url }}"></iframe>
+        {% endfor %}
+        {% endif %}
+    </section>
+</body>
+</html>
